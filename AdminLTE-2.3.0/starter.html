@@ -421,6 +421,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <!--------/--------/--------/--------/--------/--------/--------/--------/--------/--------/--------/--------/--------/>
 <!-- interactive chart -->
+
+
         <div id = "Charts"></div>
           <div class="row">
             <div class="col-md-12">
@@ -488,6 +490,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <!--------/--------/--------/--------/--------/--------/--------/--------/--------/--------/--------/--------/--------/>
 <!-- Map box -->
+          
             <div id = "Map"></div>
               <div class="box box-solid bg-light-blue-gradient">
                 <div class="box-header">
@@ -503,8 +506,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </h3>
                 </div>
                 <div class="box-body">
-                  <div id="world-map" style="height: 250px; width: 100%;"></div>
-                </div><!-- /.box-body-->
+                  
+                <!-- /.box-body-->
+                
+
+              <script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
+              <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+              <script type='text/javascript'>
+               google.charts.load('current', {'packages': ['geochart']});
+               google.charts.setOnLoadCallback(drawMarkersMap);
+
+                function drawMarkersMap() {
+                var data = google.visualization.arrayToDataTable([
+                  ['Country',   'Population', 'Area Percentage'],
+                  ['Brazil',  65700000, 100],
+                ]);
+
+                var options = {
+                  sizeAxis: { minValue: 0, maxValue: 100 },
+                  resolution: 'provinces',
+                  region: 'BR-SP',
+                  displayMode: 'markers',
+                  colorAxis: {colors: ['#e7711c', '#4374e0']} // orange to blue
+                };
+
+                var chart = new google.visualization.GeoChart(document.getElementById('chart_div'));
+                chart.draw(data, options);
+              };
+              </script>
+            
+              <div id="chart_div"></div>
+
                 <div class="box-footer no-border">
                   <div class="row">
                     <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
@@ -522,6 +554,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </div><!-- /.row -->
                 </div>
               </div>
+            </div>
               <!-- /.box -->
 <!--------/--------/--------/--------/--------/--------/--------/--------/--------/--------/--------/--------/--------/>
 
