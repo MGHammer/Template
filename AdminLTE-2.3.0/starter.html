@@ -420,12 +420,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!--------/--------/--------/--------/--------/--------/--------/--------/--------/--------/--------/--------/--------/>
 
 <!--------/--------/--------/--------/--------/--------/--------/--------/--------/--------/--------/--------/--------/>
-<!-- interactive chart -->
+<!-- CHARTS -->
 
 
         <div id = "Charts"></div>
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
               <div class="box box-primary">
                 <div class="box-header with-border">
                   <i class="fa fa-bar-chart-o"></i>
@@ -455,30 +455,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 							var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
 
 							chart.draw(data, options);
-						  }
-						</script>
-					  </head>
-						<div id="curve_chart" style="width: 100%; height: 300px"></div>
-  					
-                </div>
-                <div class="box-body">
-                  <div id="interactive" style="height: 0px; width = 100px"></div>
-                </div><!-- /.box-body-->
-              </div><!-- /.box -->
-            </div>
-            
-            <!-- BAR CHART -->
-            <div class="col-md-12">
-              <div class="box box-success">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Bar Chart</h3>
-                  <div class="box-tools pull-right">
-					    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-             			  <script type="text/javascript">
-							google.charts.load("current", {packages:['corechart']});
-							google.charts.setOnLoadCallback(drawChart);
-							function drawChart() {
-							  var data = google.visualization.arrayToDataTable([
+                
+               var data2 = google.visualization.arrayToDataTable([
 								["Element", "Density", { role: "style" } ],
 								["Copper", 8.94, "#b87333"],
 								["Silver", 10.49, "silver"],
@@ -486,31 +464,43 @@ scratch. This page gets rid of all links and provides the needed markup only.
 								["Platinum", 21.45, "color: #e5e4e2"]
 							  ]);
 
-							  var view = new google.visualization.DataView(data);
-							  view.setColumns([0, 1,
+							  var view2 = new google.visualization.DataView(data2);
+							  view2.setColumns([0, 1,
 											   { calc: "stringify",
 												 sourceColumn: 1,
 												 type: "string",
 												 role: "annotation" },
 											   2]);
 
-							  var options = {
+							  var options2 = {
 								title: "Density of Precious Metals, in g/cm^3",
-								width: 600,
-								height: 400,
 								bar: {groupWidth: "95%"},
-								legend: { position: "center" },
+								legend: { position: "below" },
 							  };
-							  var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
-							  chart.draw(view, options);
+							  var chart2 = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+							  chart2.draw(view2, options2);
 						  }
-						  </script>
-						<div id="columnchart_values" style="width: 300px; height: 100px;"></div>
-                  </div>
+						</script>
+					  </head>
+						<div id="curve_chart" style="width: 100%; height: 320px"></div>
+  					
                 </div>
                 <div class="box-body">
+                  <div id="interactive" style="height: 0px; width = 100%"></div>
+                </div><!-- /.box-body-->
+              </div><!-- /.box -->
+            </div>
+            
+            <!-- BAR CHART -->
+            <div class="col-md-6">
+              <div class="box box-success">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Bar Chart</h3>
+						<div id="columnchart_values" style="width: 100%; height: 300px;"></div>
+                  </div>
+                <div class="box-body">
                   <div class="chart">
-                    <canvas id="barChart" style="height:295px"></canvas>
+                    <canvas id="barChart" style="height:0px;width:100%"></canvas>
                   </div>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
